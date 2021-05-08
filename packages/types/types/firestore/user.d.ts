@@ -5,6 +5,9 @@ export interface UserData<T extends FirestoreDateLike = Timestamp> {
   /** 有効かどうか */
   active: boolean;
 
+  /** token が有効かどうか */
+  validToken: boolean;
+
   /** フォロワー一覧取得 最終実行日時 */
   lastUpdated: T;
 

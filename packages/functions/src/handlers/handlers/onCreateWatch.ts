@@ -94,15 +94,15 @@ export const onCreateWatchHandler: FirestoreOnCreateHandler = async (snapshot, c
 
   const token = await getToken(uid);
   if (!token) {
-    await setTokenInvalid(uid);
     errorLog('onCreateWatch', '', { uid, type: 'invalidToken' });
-    return;
   }
 
-  const client = getClient({
-    access_token_key: token.twitterAccessToken,
-    access_token_secret: token.twitterAccessTokenSecret,
-  });
+  const client = token
+    ? getClient({
+        access_token_key: token.twitterAccessToken,
+        access_token_secret: token.twitterAccessTokenSecret,
+      })
+    : getClient();
   const result = await getUsersLookup(client, { usersId: [...kuru, ...yuku] });
 
   if ('errors' in result) {

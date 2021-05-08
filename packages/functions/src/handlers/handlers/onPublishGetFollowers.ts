@@ -17,7 +17,6 @@ export const onPublishGetFollowersHandler: PubSubOnPublishHandler = async (messa
   const token = await getToken(uid);
   if (!token) {
     log('onPublishGetFollowers', 'getFollowers', { type: 'no-token', uid });
-    await setTokenInvalid(uid);
     return;
   }
   const { twitterAccessToken, twitterAccessTokenSecret, twitterId } = token;
