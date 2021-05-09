@@ -178,7 +178,7 @@ export const MyPage: React.FC<MyPageProps> = ({
       </main>
       {nav === 'setting' && (
         <section className={styles.section}>
-          <SettingMenu signOut={signOut} />
+          <SettingMenu />
         </section>
       )}
     </div>
