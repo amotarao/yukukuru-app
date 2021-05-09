@@ -6,7 +6,6 @@ import { LastUpdatedText } from '../../atoms/LastUpdatedText';
 import { LoadingCircle } from '../../atoms/LoadingCircle';
 import { ErrorWrapper } from '../../organisms/ErrorWrapper';
 import { MyNav, NavType } from '../../organisms/MyNav';
-import { NotificationList } from '../../organisms/NotificationList';
 import { SettingMenu } from '../../organisms/SettingMenu';
 import { UserCard } from '../../organisms/UserCard';
 import styles from './styles.module.scss';
@@ -175,11 +174,6 @@ export const MyPage: React.FC<MyPageProps> = ({
           </>
         )}
       </main>
-      {nav === 'notification' && (
-        <section className={styles.section}>
-          <NotificationList />
-        </section>
-      )}
       {nav === 'setting' && (
         <section className={styles.section}>
           <SettingMenu signOut={signOut} />
