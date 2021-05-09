@@ -1,11 +1,13 @@
 .nav {
   background: var(--back);
-  border-top: 1px solid var(--shadow);
+  border-bottom: 1px solid var(--shadow);
   width: 100%;
-  position: fixed;
+  height: 56px;
+  position: sticky;
+  top: 0;
   left: 0;
-  bottom: 0;
   font-size: 14px;
+  margin-bottom: 24px;
   z-index: 200;
 
   a {
@@ -17,12 +19,14 @@
   display: flex;
   justify-content: center;
   max-width: 640px;
+  height: 100%;
   margin: 0 auto;
   list-style: none;
 }
 
 .item {
   flex: 1 0 50px;
+  height: 100%;
 }
 
 .button {
@@ -36,9 +40,8 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  padding: 0.4rem 0;
-  padding: 0.4rem 0 calc(0.4rem + constant(safe-area-inset-bottom));
-  padding: 0.4rem 0 calc(0.4rem + env(safe-area-inset-bottom));
+  height: 100%;
+  padding: 0.5rem 0;
   transition: height 0.3s ease-out, padding 0.3s ease-out;
   font-size: 0.6rem;
   font-family: inherit;

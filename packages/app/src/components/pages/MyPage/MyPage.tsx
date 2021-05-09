@@ -78,7 +78,7 @@ const Home: React.FC<Pick<MyPageProps, 'items' | 'lastRunnedGetFollowers'>> = ({
           <li data-type="kuru">くるひと</li>
         </ul>
       </nav>
-      <div className={styles.noticeWrapper} style={{ marginTop: -54 }}>
+      <div className={styles.noticeWrapper} style={{ marginTop: -70 }}>
         <LastUpdatedText className={styles.noticeText} date={lastRunnedGetFollowers} />
       </div>
       {items.map((item, itemIndex) => {
@@ -153,6 +153,7 @@ export const MyPage: React.FC<MyPageProps> = ({
 
   return (
     <div className={styles.wrapper}>
+      <MyNav active={nav} onChange={setNav} />
       {!isLoading && !hasToken && (
         <ErrorWrapper onClick={superReload}>
           <p>ログアウトし、再度ログインしてください。</p>
@@ -184,7 +185,6 @@ export const MyPage: React.FC<MyPageProps> = ({
           <SettingMenu signOut={signOut} />
         </section>
       )}
-      <MyNav active={nav} onChange={setNav} />
     </div>
   );
 };
