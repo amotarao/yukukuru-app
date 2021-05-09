@@ -6,12 +6,12 @@ import styles from './styles.module.scss';
 
 export type NavType = 'home' | 'notification' | 'setting';
 
-export type BottomNavProps = {
+export type MyNavProps = {
   active: NavType;
   onChange: (nav: NavType) => void;
 };
 
-export const BottomNav: React.FC<BottomNavProps> = ({ active, onChange }) => {
+export const MyNav: React.FC<MyNavProps> = ({ active, onChange }) => {
   const onClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     const type = e.currentTarget.value as NavType;
     onChange(type);

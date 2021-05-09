@@ -4,8 +4,8 @@ import { useRecords } from '../../../hooks/records';
 import * as gtag from '../../../libs/gtag';
 import { LastUpdatedText } from '../../atoms/LastUpdatedText';
 import { LoadingCircle } from '../../atoms/LoadingCircle';
-import { BottomNav, NavType } from '../../organisms/BottomNav';
 import { ErrorWrapper } from '../../organisms/ErrorWrapper';
+import { MyNav, NavType } from '../../organisms/MyNav';
 import { NotificationList } from '../../organisms/NotificationList';
 import { SettingMenu } from '../../organisms/SettingMenu';
 import { UserCard } from '../../organisms/UserCard';
@@ -184,7 +184,7 @@ export const MyPage: React.FC<MyPageProps> = ({
           <SettingMenu signOut={signOut} />
         </section>
       )}
-      <BottomNav active={nav} onChange={setNav} />
+      <MyNav active={nav} onChange={setNav} />
     </div>
   );
 };
