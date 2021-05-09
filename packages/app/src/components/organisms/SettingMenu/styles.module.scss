@@ -1,0 +1,41 @@
+.list {
+  list-style: none;
+}
+
+.item {
+  border-bottom: 1px solid var(--back-2);
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3.2rem;
+  padding: 0 1rem;
+  appearance: none;
+  background: none;
+  width: 100%;
+  border: none;
+  color: inherit;
+  font-size: 1rem;
+  font-family: inherit;
+  text-decoration: none;
+
+  button & {
+    cursor: pointer;
+  }
+}
+
+.twitter {
+  margin-top: 1rem;
+  padding: 1rem;
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  * + * {
+    margin-top: 2rem;
+  }
+}

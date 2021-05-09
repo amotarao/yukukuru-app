@@ -1,12 +1,11 @@
-import { RecordData } from '@yukukuru/types';
+import { RecordData, UserData } from '@yukukuru/types';
 import React, { useState, useEffect } from 'react';
 import { useRecords } from '../../../hooks/records';
 import * as gtag from '../../../libs/gtag';
 import { LastUpdatedText } from '../../atoms/LastUpdatedText';
 import { LoadingCircle } from '../../atoms/LoadingCircle';
-import { BottomNav, NavType } from '../../organisms/BottomNav';
 import { ErrorWrapper } from '../../organisms/ErrorWrapper';
-import { NotificationList } from '../../organisms/NotificationList';
+import { MyNav, NavType } from '../../organisms/MyNav';
 import { SettingMenu } from '../../organisms/SettingMenu';
 import { UserCard } from '../../organisms/UserCard';
 import styles from './styles.module.scss';
@@ -18,6 +17,7 @@ export type MyPageProps = {
   hasNext: boolean;
   hasToken: boolean;
   lastRunnedGetFollowers: Date;
+  user: Pick<UserData['twitter'], 'name' | 'screenName' | 'photoUrl'>;
   getNextRecords: ReturnType<typeof useRecords>[1]['getNextRecords'];
   signOut: () => void | Promise<void>;
 };
@@ -78,7 +78,7 @@ const Home: React.FC<Pick<MyPageProps, 'items' | 'lastRunnedGetFollowers'>> = ({
           <li data-type="kuru">くるひと</li>
         </ul>
       </nav>
-      <div className={styles.noticeWrapper} style={{ marginTop: -54 }}>
+      <div className={styles.noticeWrapper} style={{ marginTop: -70 }}>
         <LastUpdatedText className={styles.noticeText} date={lastRunnedGetFollowers} />
       </div>
       {items.map((item, itemIndex) => {
@@ -110,6 +110,7 @@ export const MyPage: React.FC<MyPageProps> = ({
   hasNext,
   hasToken,
   lastRunnedGetFollowers,
+  user,
   getNextRecords,
   signOut,
 }) => {
@@ -153,6 +154,7 @@ export const MyPage: React.FC<MyPageProps> = ({
 
   return (
     <div className={styles.wrapper}>
+      <MyNav active={nav} userImageUrl={user.photoUrl} onChange={setNav} signOut={signOut} />
       {!isLoading && !hasToken && (
         <ErrorWrapper onClick={superReload}>
           <p>ログアウトし、再度ログインしてください。</p>
@@ -174,17 +176,11 @@ export const MyPage: React.FC<MyPageProps> = ({
           </>
         )}
       </main>
-      {nav === 'notification' && (
-        <section className={styles.section}>
-          <NotificationList />
-        </section>
-      )}
       {nav === 'setting' && (
         <section className={styles.section}>
-          <SettingMenu signOut={signOut} />
+          <SettingMenu />
         </section>
       )}
-      <BottomNav active={nav} onChange={setNav} />
     </div>
   );
 };

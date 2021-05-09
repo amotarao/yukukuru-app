@@ -1,25 +1,17 @@
-/** @jsxImportSource @emotion/react */
 import Switch from '@material-ui/core/Switch';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React from 'react';
 import { ThemeContainer } from '../../../store/theme';
 import { TweetButton } from '../TweetButton';
-import { style } from './style';
+import styles from './styles.module.scss';
 
-type SettingMenuProps = {
-  signOut: () => void | Promise<void>;
-};
-
-export const SettingMenu: React.FC<SettingMenuProps> = ({ signOut }) => {
-  const router = useRouter();
+export const SettingMenu: React.FC = () => {
   const { theme, setTheme } = ThemeContainer.useContainer();
 
   return (
     <>
-      <ul css={style.list}>
-        <li css={style.item}>
-          <div css={style.card}>
+      <ul className={styles.list}>
+        <li className={styles.item}>
+          <div className={styles.card}>
             <p>ダークテーマ</p>
             <Switch
               checked={theme === 'dark'}
@@ -31,34 +23,8 @@ export const SettingMenu: React.FC<SettingMenuProps> = ({ signOut }) => {
             />
           </div>
         </li>
-        <li css={style.item}>
-          <Link href="/" passHref>
-            <a
-              css={style.card}
-              onClick={() => {
-                signOut();
-              }}
-            >
-              <p>ログアウト</p>
-            </a>
-          </Link>
-        </li>
-        <li css={style.item}>
-          <Link href="/my?login" passHref>
-            <a
-              css={style.card}
-              onClick={async (e) => {
-                e.preventDefault();
-                await signOut();
-                router.replace('/my?login');
-              }}
-            >
-              <p>ログアウト・別のアカウントでログイン</p>
-            </a>
-          </Link>
-        </li>
       </ul>
-      <div css={style.twitter}>
+      <div className={styles.twitter}>
         <p>
           <a href="https://twitter.com/intent/follow?screen_name=yukukuruapp" target="_blank" rel="noopener noreferrer">
             公式Twitterをフォローする @yukukuruapp

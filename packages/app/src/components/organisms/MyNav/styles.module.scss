@@ -1,0 +1,133 @@
+.nav {
+  display: flex;
+  background: var(--back);
+  border-bottom: 1px solid var(--shadow);
+  width: 100%;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  font-size: 14px;
+  margin-bottom: 24px;
+  z-index: 200;
+}
+
+.list {
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  max-width: 640px;
+  height: 100%;
+  margin: 0 auto;
+  list-style: none;
+
+  a {
+    color: var(--primary);
+  }
+}
+
+.item {
+  flex: 1 0 50px;
+  height: 100%;
+}
+
+.button {
+  appearance: none;
+  background: none;
+  border: none;
+  color: var(--sub);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem 0;
+  transition: height 0.3s ease-out, padding 0.3s ease-out;
+  font-size: 0.6rem;
+  font-family: inherit;
+
+  &[aria-selected='true'] {
+    color: var(--primary);
+  }
+
+  &:focus {
+    outline: none;
+    background-color: var(--primary-bg);
+  }
+
+  svg {
+    font-size: 1.75rem;
+  }
+}
+
+.user {
+  $width: 64px;
+  flex: 0 0 $width;
+  appearance: none;
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $width;
+  height: 100%;
+}
+
+.userIcon {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+}
+
+.userMenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  padding: 16px;
+
+  &:hover {
+    display: block;
+  }
+
+  .user:hover + & {
+    display: block;
+  }
+
+}
+
+.menuList {
+  list-style: none;
+  background: var(--back);
+  border: 1px solid var(--back-2);
+  border-radius: 8px;
+  padding: 8px 0;
+}
+
+.menuItem {
+  + .menuItem {
+    border-top: 1px solid var(--back-2);
+  }
+}
+
+.menuCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3.2rem;
+  padding: 0 1rem;
+  appearance: none;
+  background: none;
+  width: 100%;
+  border: none;
+  color: inherit;
+  font-size: 0.9rem;
+  font-family: inherit;
+  text-decoration: none;
+  color: inherit;
+}
