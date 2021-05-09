@@ -1,4 +1,4 @@
-import { RecordData } from '@yukukuru/types';
+import { RecordData, UserData } from '@yukukuru/types';
 import React, { useState, useEffect } from 'react';
 import { useRecords } from '../../../hooks/records';
 import * as gtag from '../../../libs/gtag';
@@ -17,6 +17,7 @@ export type MyPageProps = {
   hasNext: boolean;
   hasToken: boolean;
   lastRunnedGetFollowers: Date;
+  user: Pick<UserData['twitter'], 'name' | 'screenName' | 'photoUrl'>;
   getNextRecords: ReturnType<typeof useRecords>[1]['getNextRecords'];
   signOut: () => void | Promise<void>;
 };
@@ -109,6 +110,7 @@ export const MyPage: React.FC<MyPageProps> = ({
   hasNext,
   hasToken,
   lastRunnedGetFollowers,
+  user,
   getNextRecords,
   signOut,
 }) => {
@@ -152,7 +154,7 @@ export const MyPage: React.FC<MyPageProps> = ({
 
   return (
     <div className={styles.wrapper}>
-      <MyNav active={nav} onChange={setNav} />
+      <MyNav active={nav} userImageUrl={user.photoUrl} onChange={setNav} />
       {!isLoading && !hasToken && (
         <ErrorWrapper onClick={superReload}>
           <p>ログアウトし、再度ログインしてください。</p>

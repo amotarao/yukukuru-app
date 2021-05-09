@@ -1,16 +1,18 @@
 import HomeIcon from '@material-ui/icons/Home';
 import SettingsIcon from '@material-ui/icons/Settings';
 import React from 'react';
+import { ProfileImage } from '../../atoms/ProfileImage';
 import styles from './styles.module.scss';
 
 export type NavType = 'home' | 'setting';
 
 export type MyNavProps = {
   active: NavType;
+  userImageUrl: string;
   onChange: (nav: NavType) => void;
 };
 
-export const MyNav: React.FC<MyNavProps> = ({ active, onChange }) => {
+export const MyNav: React.FC<MyNavProps> = ({ active, userImageUrl, onChange }) => {
   const onClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     const type = e.currentTarget.value as NavType;
     onChange(type);
@@ -37,6 +39,9 @@ export const MyNav: React.FC<MyNavProps> = ({ active, onChange }) => {
           </button>
         </li>
       </ul>
+      <button className={styles.user}>
+        <ProfileImage className={styles.userIcon} src={userImageUrl} alt="ユーザー設定" />
+      </button>
     </nav>
   );
 };

@@ -1,4 +1,5 @@
 .nav {
+  display: flex;
   background: var(--back);
   border-bottom: 1px solid var(--shadow);
   width: 100%;
@@ -16,6 +17,7 @@
 }
 
 .list {
+  flex: 1 0 auto;
   display: flex;
   justify-content: center;
   max-width: 640px;
@@ -58,4 +60,26 @@
   svg {
     font-size: 1.75rem;
   }
+}
+
+.user {
+  $width: 64px;
+  flex: 0 0 $width;
+  appearance: none;
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $width;
+  height: 100%;
+}
+
+.userIcon {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
 }
