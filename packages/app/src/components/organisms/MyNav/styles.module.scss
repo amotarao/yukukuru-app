@@ -10,10 +10,6 @@
   font-size: 14px;
   margin-bottom: 24px;
   z-index: 200;
-
-  a {
-    color: var(--primary);
-  }
 }
 
 .list {
@@ -24,6 +20,10 @@
   height: 100%;
   margin: 0 auto;
   list-style: none;
+
+  a {
+    color: var(--primary);
+  }
 }
 
 .item {
@@ -82,4 +82,52 @@
   border-radius: 50%;
   width: 36px;
   height: 36px;
+}
+
+.userMenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  padding: 16px;
+
+  &:hover {
+    display: block;
+  }
+
+  .user:hover + & {
+    display: block;
+  }
+
+}
+
+.menuList {
+  list-style: none;
+  background: var(--back);
+  border: 1px solid var(--back-2);
+  border-radius: 8px;
+  padding: 8px 0;
+}
+
+.menuItem {
+  + .menuItem {
+    border-top: 1px solid var(--back-2);
+  }
+}
+
+.menuCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3.2rem;
+  padding: 0 1rem;
+  appearance: none;
+  background: none;
+  width: 100%;
+  border: none;
+  color: inherit;
+  font-size: 0.9rem;
+  font-family: inherit;
+  text-decoration: none;
+  color: inherit;
 }

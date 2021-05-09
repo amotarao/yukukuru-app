@@ -154,7 +154,7 @@ export const MyPage: React.FC<MyPageProps> = ({
 
   return (
     <div className={styles.wrapper}>
-      <MyNav active={nav} userImageUrl={user.photoUrl} onChange={setNav} />
+      <MyNav active={nav} userImageUrl={user.photoUrl} onChange={setNav} signOut={signOut} />
       {!isLoading && !hasToken && (
         <ErrorWrapper onClick={superReload}>
           <p>ログアウトし、再度ログインしてください。</p>
