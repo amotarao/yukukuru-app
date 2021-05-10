@@ -43,5 +43,30 @@ service cloud.firestore {
                       && request.resource.data.lastViewing == request.time;
       allow read: if false;
     }
+
+    // Stripe Extension
+    match /stripeCustomers/{uid} {
+      allow read: if request.auth.uid == uid;
+
+      match /checkout_sessions/{id} {
+        allow read, write: if request.auth.uid == uid;
+      }
+      match /subscriptions/{id} {
+        allow read: if request.auth.uid == uid;
+      }
+    }
+
+    // Stripe Extension
+    match /stripePlans/{id} {
+      allow read: if true;
+
+      match /prices/{id} {
+        allow read: if true;
+      }
+
+      match /tax_rates/{id} {
+        allow read: if true;
+      }
+    }
   }
 }
