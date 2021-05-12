@@ -1,0 +1,120 @@
+.wrapper {
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+  max-width: 480px;
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "free supporter"
+    "comparison comparison";
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 16px;
+
+  @media screen and (min-width: 640px) {
+    padding: 40px 24px 80px;
+    max-width: 960px;
+    grid-template-areas:
+      "header header"
+      "free supporter"
+      "comparison comparison";
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 24px;
+  }
+}
+
+.header {
+  grid-area: header;
+
+  text-align: center;
+}
+
+.head {
+  font-size: 1.5rem;
+}
+
+.section {
+  border: 1px solid var(--shadow);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+
+  @media screen and (min-width: 640px) {
+    margin: 0;
+  }
+}
+
+.free {
+  grid-area: free;
+}
+
+.supporter {
+  grid-area: supporter;
+
+  border-color: var(--primary);
+}
+
+.subHead {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+
+  @media screen and (min-width: 640px) {
+    font-size: 1.2rem;
+  }
+}
+
+.price {
+  font-size: 3rem;
+
+  @media screen and (min-width: 640px) {
+    font-size: 4rem;
+  }
+
+  small {
+    font-size: 1.3rem;
+    margin: 0 0.2em;
+
+    @media screen and (min-width: 640px) {
+      font-size: 2rem;
+    }
+  }
+}
+
+.featureList {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.featureItem {
+  display: grid;
+  grid-template-areas:
+    "title text";
+  grid-template-columns: 160px 1fr;
+  padding: 0.8em 0;
+  border-top: 1px solid var(--shadow);
+  border-bottom: 1px solid var(--shadow);
+}
+
+.featureItemTitle {
+  grid-area: title;
+  align-self: flex-end;
+  text-align: left;
+  font-size: 0.8rem;
+
+  @media screen and (min-width: 640px) {
+    font-size: 0.9rem;
+  }
+}
+
+.featureItemText {
+  grid-area: text;
+  text-align: center;
+  font-size: 1rem;
+
+  @media screen and (min-width: 640px) {
+    font-size: 1.1rem;
+  }
+}
+
+.comparison {
+  grid-area: comparison;
+}
